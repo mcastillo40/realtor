@@ -31,6 +31,10 @@ app.use(function(request, response, next) {
   next();
 });
 
+app.get('/', (req, res) => {
+  res.send({ test: 'this'});
+})
+
 app.listen(PORT, () => {
   console.log("Listening on port " + PORT);
 });
