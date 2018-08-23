@@ -1,0 +1,36 @@
+{
+  "name": "realtor",
+  "version": "1.0.0",
+  "description": "Server for realtor website",
+  "main": "index.js",
+  "engines": {
+    "node": "8.11.4",
+    "npm": "5.6.0"
+  },
+  "directories": {
+    "lib": "lib"
+  },
+  "scripts": {
+    "start": "node index.js",
+    "server": "nodemon index.js",
+    "client": "npm run start --prefix client",
+    "dev": "concurrently \"npm run server\" \"npm run client\"",
+    "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install --prefix client && npm run build --prefix client"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mcastillo40/realtor.git"
+  },
+  "author": "Matthew Castillo",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mcastillo40/realtor/issues"
+  },
+  "homepage": "https://github.com/mcastillo40/realtor#readme",
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "concurrently": "^3.6.1",
+    "cors": "^2.8.4",
+    "express": "^4.16.3"
+  }
+}
