@@ -8,12 +8,12 @@ In order to run program:
 
 1. npm install
 2. Start mongodb locally
-3. Set Private Key 
-4. (In order to test key, I understand this is not standard practice)
+3. Set Private Key: 
+(In order to test key, I understand this is not standard practice)
 export realtor_jwtPrivateKey=mySecretKey
-5. Run npm start
-6. App running on localhost:5000/
-7. Must manually set user permission 'isAdmin' to true in database, defaults to false
+4. Run npm start
+5. App running on localhost:5000/
+6. Must manually set user permission 'isAdmin' to true in database if you want to manipulate data, defaults to false
 
 
 ### Register a User
