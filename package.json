@@ -25,9 +25,16 @@
   },
   "homepage": "https://github.com/mcastillo40/realtor#readme",
   "dependencies": {
+    "bcrypt": "^3.0.0",
     "body-parser": "^1.18.3",
     "concurrently": "^3.6.1",
+    "config": "^2.0.1",
     "cors": "^2.8.4",
-    "express": "^4.16.3"
+    "express": "^4.16.3",
+    "joi": "^13.6.0",
+    "jsonwebtoken": "^8.3.0",
+    "lodash": "^4.17.10",
+    "mongoose": "^5.2.9",
+    "uuid": "^3.3.2"
   }
 }

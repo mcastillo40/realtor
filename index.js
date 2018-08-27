@@ -1,14 +1,22 @@
 const express = require("express");
-const bodyParser = require("body-parser");
 const cors = require("cors");
+const mongoose = require('mongoose');
+const houses = require('./routes/houses');
+const users = require('./routes/users');
+const auth = require('./routes/auth');
+const config = require('config');
 
 const PORT = process.env.PORT || 5000;
 
 const app = express();
 
+// Validates if a key is provided in order to run application
+if (!config.get('jwtPrivateKey')){
+  console.log("Fatal error: jwtPrivateKey is not defined")
+  process.exit(1);
+}
+
 app.use(cors());
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: false }));
 
 if (process.env.NODE_ENV === "production") {
   // Will serve production assets
@@ -22,6 +30,7 @@ if (process.env.NODE_ENV === "production") {
   }
 }
 
+app.use(express.json());
 app.use(function(request, response, next) {
   response.header("Access-Control-Allow-Origin", "*");
   response.header(
@@ -31,9 +40,13 @@ app.use(function(request, response, next) {
   next();
 });
 
-app.get('/', (req, res) => {
-  res.send({ test: 'this'});
-})
+mongoose.connect('mongodb://localhost/realtor', { useNewUrlParser: true })
+  .then(() => console.log("Connected to MongoDB"))
+  .catch((err) => console.log("ERR: ", err))
+
+app.use('/api/houses', houses);
+app.use('/api/users', users);
+app.use('/api/auth', auth);
 
 app.listen(PORT, () => {
   console.log("Listening on port " + PORT);
